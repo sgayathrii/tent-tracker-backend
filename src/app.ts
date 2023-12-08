@@ -7,6 +7,7 @@ dotenv.config();
 
 import userRoutes from './routes/userRoutes';
 import campingRoutes from './routes/campingRoutes';
+import bookCampRoutes from './routes/bookCampRoutes';
 
 const app: Application = express();
 
@@ -18,6 +19,7 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.use('/api/users', userRoutes);
-app.use('/api/camping_areas', campingRoutes); 
+app.use('/api/camping-areas', campingRoutes);
+app.use('/api/book-camp', bookCampRoutes); 
 
 export default app;

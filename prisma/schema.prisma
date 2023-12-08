@@ -20,3 +20,16 @@ model CampingArea {
   availability Boolean
   imageUrl     String?
 }
+
+model Booking {
+  id             Int      @id @default(autoincrement())
+  campingAreaId  Int
+  name           String
+  email          String
+  phone          String
+  fromDate       DateTime
+  toDate         DateTime
+  numberOfPeople Int
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
