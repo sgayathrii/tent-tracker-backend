@@ -5,6 +5,5 @@ const router = express.Router();
 
 router.get('/', campingController.getAllCampingAreas);
 router.post('/book', campingController.bookCampingArea);
-router.post('/withdraw', campingController.withdrawBooking);
 
 export default router;

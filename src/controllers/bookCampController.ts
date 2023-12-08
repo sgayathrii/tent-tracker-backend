@@ -14,13 +14,6 @@ const BookCampController = {
     }
   },
 
-  withdrawBooking: async (req: Request, res: Response, next: NextFunction) => {
-    const { campingAreaId, userId } = req.body;
-
-    const withdrawalResult = await BookCampService.withdrawBooking(campingAreaId, userId);
-
-    res.status(200).json(withdrawalResult);
-  },
 };
 
 export default BookCampController;
