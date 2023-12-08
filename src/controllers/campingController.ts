@@ -11,38 +11,21 @@ const campingController = {
     }
   },
 
-  bookCampingArea: async (req: Request, res: Response, next: NextFunction) => {
+  getCampingAreaById: async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { campingAreaId, userId } = req.body;
+      const { id } = req.params;
+      const campingArea = await CampingService.getCampingAreaById(parseInt(id, 10));
 
-      if (!campingAreaId || !userId) {
-        return res.status(400).json({ error: 'Camping area ID and user ID are required' });
+      if (!campingArea) {
+        return res.status(404).json({ message: 'Camping area not found' });
       }
 
-      const bookingResult = await CampingService.bookCampingArea(campingAreaId, userId);
-
-      res.status(200).json(bookingResult);
+      res.status(200).json(campingArea);
     } catch (error) {
       next(error);
     }
   },
 
-  withdrawBooking: async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const { campingAreaId, userId } = req.body;
-
-      if (!campingAreaId || !userId) {
-        return res.status(400).json({ error: 'Camping area ID and user ID are required' });
-      }
-
-      const withdrawalResult = await CampingService.withdrawBooking(campingAreaId, userId);
-
-      res.status(200).json(withdrawalResult);
-    } catch (error) {
-      next(error);
-    }
-  },
- 
 };
 
 export default campingController;
